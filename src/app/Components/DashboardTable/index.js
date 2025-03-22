@@ -97,7 +97,7 @@ export default function DashboardTable({ initialPosts = [] }) {
           onChange={(e) => setFilterBy(e.target.value)} 
           className={`border rounded-lg py-1 bg-[#000] px-3 focus:outline-none focus:ring-2 focus:ring-gray-700 ${myTheme == 'dark' ? 'bg-[#010000]' : 'bg-white'}`}
         >
-          <option value="">--Select--</option>
+          <option value="">Search By</option>
           <option value="userId">User Id</option>
           <option value="title">Title</option>
         </select>

@@ -14,8 +14,8 @@ export default function Page() {
   const router = useRouter()
 
   const [loginData, setLoginData] = useState({
-    email: '',
-    password: '',
+    email: 'test@gmail.com',
+    password: '123456',
   })
 
   const handleSignIn = () => {

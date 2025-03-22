@@ -70,10 +70,16 @@ export default function DashboardTable({ initialPosts = [] }) {
   };
 
   useEffect(() => {
-    if (search || filterBy) {
-      handleFilter();
-    }
-  }, [search]);
+    const handler = setTimeout(() => {
+      if (search || filterBy) {
+        handleFilter();
+      }
+    }, 800); 
+  
+    return () => {
+      clearTimeout(handler); 
+    };
+  }, [search, filterBy]); 
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -97,7 +103,7 @@ export default function DashboardTable({ initialPosts = [] }) {
           onChange={(e) => setFilterBy(e.target.value)} 
           className={`border rounded-lg py-1 bg-[#000] px-3 focus:outline-none focus:ring-2 focus:ring-gray-700 ${myTheme == 'dark' ? 'bg-[#010000]' : 'bg-white'}`}
         >
-          <option value="">Search By</option>
+          <option value="">Filter By</option>
           <option value="userId">User Id</option>
           <option value="title">Title</option>
         </select>

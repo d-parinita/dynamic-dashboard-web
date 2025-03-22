@@ -1,5 +1,5 @@
 'use client'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -34,6 +34,14 @@ export default function Page() {
     toast.success('Signed in successfully')
     router.push(routes.DASHBOARD)
   }
+
+  useEffect(() => {
+    const getUser = localStorage.getItem('user')
+    if (getUser) {
+      router.push(routes.DASHBOARD)
+      return
+    }
+  }, [])
 
   return (
     <div className="flex min-h-screen items-center justify-center p-4">
